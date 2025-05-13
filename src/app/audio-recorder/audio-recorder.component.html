@@ -1,0 +1,48 @@
+<section class="container">
+    <div class="d-flex flex-column justify-content-between recording-wrapper-box py-4">
+        <img src="icons/back.png" alt="back" class="back-icon mb-5">
+        <div class="d-flex flex-column">
+            <div class="recording-area">
+
+                @if (!isRecordingCompleted) {
+
+                <ngx-mic-recorder [showVisualization]="true" visualizationType="SineWave"
+                    [visualizationOptions]="{width: 350, height: 200, strokeColor: '#212121', backgroundColor: 'white'}">
+                    <ng-template ngx-mic-pause-and-resume let-isRecording let-toggle="toggle"
+                        let-recordingTime="recordingTime" let-isPaused="isPaused" let-recordingState="recordingState">
+                        <ng-template [ngIf]="isRecording">
+                            <div class="ngx-mic-recorder__recording-time">
+                                {{ recordingTime }}
+                            </div>
+                        </ng-template>
+                    </ng-template>
+
+
+                    <ng-template ngx-mic-start-and-stop let-isRecording let-toggle="toggle" let-start="start"
+                        let-stop="start">
+                        <div class="ngx-mic-recorder__start-stop" (click)="toggle()">
+                            <div [ngClass]="isRecording?'recording-in-progress':'not-recording'"
+                                class="ngx-mic-recorder__state">
+                                <div class="ngx-mic-recorder__state-start-stop"></div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngx-mic-recorder>
+                }
+                <div [ngClass]="isRecordingCompleted?'d-block':'d-none'" class="waveform" id="waveform"></div>
+                <p class="text-center recording-time">{{recordingTime | slice: 3 }}/0:30</p>
+
+
+                <!-- <div class="record-button-container">
+                    <button class="record-button"></button>
+                </div> -->
+            </div>
+            <h6 class="start-recording-text text-center pt-4">{{isRecordingCompleted?'Tap to play':'Tap to start
+                recording'}}</h6>
+        </div>
+
+        <button class="next-button align-self-center">{{isRecordingCompleted?'Submit':'Next'}}</button>
+
+        <audio [src]="audioUrl" controls class="d-none"></audio>
+    </div>
+</section>

@@ -1,0 +1,128 @@
+.back-icon {
+    width: 24px;
+    height: auto;
+    object-fit: contain;
+}
+
+.container {
+    height: 100%;
+    min-height: 100%;
+}
+
+ngx-mic-recorder {
+    width: 100% !important;
+    height: 200px !important;
+}
+
+.waveform {
+    height: 200px;
+}
+
+.ngx-mic-recorder__recording-time {
+    display: none !important;
+}
+
+.recording-area {
+    position: relative;
+    height: 260px;
+    border: 2px solid #f0f0f0;
+}
+
+.recording-area canvas {
+    width: 100%;
+    height: 200px;
+}
+
+.recording-wrapper-box {
+    min-height: 100dvh;
+}
+
+.recording-area::before {
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(/icons/mic.png) no-repeat center center/32px 32px;
+    width: 72px;
+    height: 72px;
+    padding: 12px;
+    border: 2px solid #f0f0f0;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.ngx-mic-recorder__start-stop {
+    border-radius: 50%;
+    padding: 4px !important;
+    border: 2px solid #f0f0f0 !important;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #fff !important;
+}
+
+.ngx-mic-recorder__state {
+    transition: all 0.2s ease-in-out;
+}
+
+.recording-time {
+    position: relative;
+    bottom: 20px;
+}
+
+.ngx-mic-recorder__state.not-recording {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.ngx-mic-recorder__state.recording-in-progress {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 10px;
+}
+
+.ngx-mic-recorder__state-start-stop {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #dc0049 !important;
+}
+
+.ngx-mic-recorder__state.recording-in-progress .ngx-mic-recorder__state-start-stop {
+    background-color: #f0f0f0;
+    border-radius: 6px;
+}
+
+.start-recording-text {
+    color: #000;
+}
+
+.next-button {
+    border: 0;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 260px;
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #dc0049;
+    border: 1px solid #dc0049;
+}
+
+.next-button:hover {
+    color: #000;
+    border: 2px solid #f0f0f0;
+    background-color: #fff;
+}
+
+.next-button:disabled {
+    color: #000;
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}

@@ -1,0 +1,18 @@
+.back-icon {
+    width: 24px;
+    height: auto;
+    object-fit: contain;
+}
+
+.slider-wrapper {
+    width: 240px;
+}
+
+.swiper-image {
+    padding: 12px;
+    border-radius: 20px;
+    width: 100%;
+    min-width: 240px;
+    height: 240px;
+    object-fit: cover;
+}
