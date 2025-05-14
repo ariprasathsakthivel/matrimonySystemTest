@@ -33,7 +33,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
-                "glob": "**/*",
+                "glob": "_redirects",
                 "input": "public"
               }
             ],
