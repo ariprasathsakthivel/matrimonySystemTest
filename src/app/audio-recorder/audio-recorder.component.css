@@ -2,6 +2,7 @@
     width: 24px;
     height: auto;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .container {
