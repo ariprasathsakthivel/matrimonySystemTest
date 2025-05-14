@@ -30,7 +30,6 @@ export class AudioRecorderComponent implements OnInit {
     })
     this.ngxMicRecorderService.recordingTime$.subscribe({
       next: (recording: string) => {
-        console.log(recording)
         this.recordingTime = recording
         if (this.recordingTime === '00:00:30') {
           this.ngxMicRecorderService.stopRecording();
@@ -41,7 +40,6 @@ export class AudioRecorderComponent implements OnInit {
     this.ngxMicRecorderService.recordedBlob$.subscribe({
       next: (response: any) => {
         if (response) {
-          console.log(response)
           this.audioUrl = URL.createObjectURL(response);
           this.isRecordingCompleted = true;
           this.createWaveSurfer();
@@ -51,18 +49,15 @@ export class AudioRecorderComponent implements OnInit {
   }
 
   createWaveSurfer() {
-    console.log('wavesurfer')
     this.wavesurferRef = WaveSurfer.create({
       container: '#waveform',
       url: this.audioUrl,
       height: 200,
       width: 'auto',
     })
-    console.log(this.wavesurferRef.getDuration())
     this.audioDuration = this.wavesurferRef.getDuration();
     this.wavesurferRef.on('ready', (event: number) => {
       this.audioDuration = Math.round(event).toString().padStart(2, '0');
-      console.log(this.audioDuration)
       this.recordingTime = '00';
     })
     this.wavesurferRef.on('audioprocess', (event: any) => {

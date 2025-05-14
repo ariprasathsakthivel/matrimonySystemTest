@@ -14,7 +14,6 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     const swiperEl = document.querySelector('swiper-container');
     swiperEl?.addEventListener('swiperslidechange', (event: any) => {
-      console.log(event.detail[0].activeIndex)
       this.activeSlideIndex = event.detail[0].activeIndex + 1;
     })
   }

@@ -3,9 +3,7 @@
         <img src="icons/back.png" alt="back" class="back-icon mb-5">
         <div class="d-flex flex-column">
             <div class="recording-area">
-
                 @if (!isRecordingCompleted) {
-
                 <ngx-mic-recorder [showVisualization]="true" visualizationType="SineWave"
                     [visualizationOptions]="{width: 350, height: 200, strokeColor: '#212121', backgroundColor: 'white'}">
                     <ng-template ngx-mic-pause-and-resume let-isRecording let-toggle="toggle"
@@ -39,7 +37,6 @@
                 <p class="text-center recording-time">00:{{recordingTime }}/00:{{audioDuration}}
                 </p>
                 }
-
                 @if (isRecordingCompleted) {
                 <div class="record-button-container">
                     <button [ngClass]="wavesurferRef.isPlaying()?'pause-button':'play-button'" class="record-button"
