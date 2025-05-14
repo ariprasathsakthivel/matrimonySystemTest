@@ -50,9 +50,11 @@ ngx-mic-recorder {
     border: 2px solid #f0f0f0;
     border-radius: 50%;
     background-color: #fff;
+    z-index: 1000;
 }
 
-.ngx-mic-recorder__start-stop {
+.ngx-mic-recorder__start-stop,
+.record-button-container {
     border-radius: 50%;
     padding: 4px !important;
     border: 2px solid #f0f0f0 !important;
@@ -74,17 +76,12 @@ ngx-mic-recorder {
 .recording-time {
     position: relative;
     bottom: 20px;
+    z-index: 1000;
 }
 
-.ngx-mic-recorder__state.not-recording {
+.ngx-mic-recorder__state {
     width: 40px !important;
     height: 40px !important;
-}
-
-.ngx-mic-recorder__state.recording-in-progress {
-    width: 20px !important;
-    height: 20px !important;
-    margin: 10px;
 }
 
 .ngx-mic-recorder__state-start-stop {
@@ -92,11 +89,6 @@ ngx-mic-recorder {
     height: 100%;
     border-radius: 50%;
     background-color: #dc0049 !important;
-}
-
-.ngx-mic-recorder__state.recording-in-progress .ngx-mic-recorder__state-start-stop {
-    background-color: #f0f0f0;
-    border-radius: 6px;
 }
 
 .start-recording-text {
@@ -125,4 +117,49 @@ ngx-mic-recorder {
     color: #000;
     background-color: #f0f0f0;
     cursor: not-allowed;
+    border: unset;
+}
+
+.record-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #dc0049 !important;
+    border: 0;
+    position: relative;
+}
+
+.record-button::after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.record-button.play-button::after {
+    background: url(/icons/play.png) no-repeat center center/contain;
+}
+
+.record-button.pause-button::after {
+    background-color: #f0f0f0;
+    border-radius: 2px;
+}
+
+.close-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0px 8px;
+    cursor: pointer;
+}
+
+@media (min-width:767.98px) {
+    .close-icon {
+        margin: 0px 20px;
+    }
+
+    .next-button {
+        max-width: 260px;
+    }
 }

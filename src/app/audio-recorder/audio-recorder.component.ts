@@ -15,12 +15,19 @@ export class AudioRecorderComponent implements OnInit {
   audioUrl: string = '';
   isRecordingCompleted: boolean = false;
   wavesurferRef: any;
+  audioDuration: string = '';
+  isRecordingStarted: boolean = false;
 
   ngOnInit(): void {
     this.invokeMicRecorderServices();
   }
 
   invokeMicRecorderServices() {
+    this.ngxMicRecorderService.isRecording$.subscribe({
+      next: (recordingState: boolean) => {
+        this.isRecordingStarted = recordingState;
+      }
+    })
     this.ngxMicRecorderService.recordingTime$.subscribe({
       next: (recording: string) => {
         console.log(recording)
@@ -33,13 +40,12 @@ export class AudioRecorderComponent implements OnInit {
 
     this.ngxMicRecorderService.recordedBlob$.subscribe({
       next: (response: any) => {
-        console.log(response)
         if (response) {
+          console.log(response)
           this.audioUrl = URL.createObjectURL(response);
           this.isRecordingCompleted = true;
           this.createWaveSurfer();
         }
-
       }
     })
   }
@@ -51,17 +57,30 @@ export class AudioRecorderComponent implements OnInit {
       url: this.audioUrl,
       height: 200,
       width: 'auto',
-      mediaControls: true
+    })
+    console.log(this.wavesurferRef.getDuration())
+    this.audioDuration = this.wavesurferRef.getDuration();
+    this.wavesurferRef.on('ready', (event: number) => {
+      this.audioDuration = Math.round(event).toString().padStart(2, '0');
+      console.log(this.audioDuration)
+      this.recordingTime = '00';
+    })
+    this.wavesurferRef.on('audioprocess', (event: any) => {
+      this.recordingTime = Math.round(event).toString().padStart(2, '0');
     })
   }
 
-
-
-  play() {
-    this.wavesurferRef.play();
+  playPause() {
+    this.wavesurferRef.playPause();
+  }
+  pause() {
+    this.wavesurferRef.pause();
   }
 
   discardRecording() {
-
+    this.recordingTime = '00:00:00';
+    this.audioUrl = '';
+    this.isRecordingCompleted = false;
+    this.wavesurferRef.destroy();
   }
 }

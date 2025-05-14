@@ -5,7 +5,7 @@ import { AudioRecorderComponent } from './audio-recorder/audio-recorder.componen
 
 const routes: Routes = [
   { path: 'gallery', component: GalleryComponent },
-  { path: 'audio-recorder', component: AudioRecorderComponent },
+  { path: 'audio', component: AudioRecorderComponent },
   { path: '', redirectTo: '/gallery', pathMatch: 'full' },
   { path: '**', redirectTo: '/gallery' },
 ];

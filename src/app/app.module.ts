@@ -14,7 +14,7 @@ register();
   declarations: [
     AppComponent,
     GalleryComponent,
-    AudioRecorderComponent
+    AudioRecorderComponent,
   ],
   imports: [
     BrowserModule,

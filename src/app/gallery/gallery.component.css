@@ -16,3 +16,14 @@
     height: 240px;
     object-fit: cover;
 }
+
+.swiper-slide-shadow {
+    background-color: unset !important;
+}
+
+.slider-wrapper {
+    --swiper-pagination-top: 100%;
+    --swiper-pagination-color: #dc0049;
+    --swiper-pagination-bullet-width: 6px;
+    --swiper-pagination-bullet-height: 6px;
+}
